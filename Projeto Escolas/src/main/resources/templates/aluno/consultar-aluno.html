@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="estilo.css" rel="stylesheet" type="text/css" media="all">
+
+    <title>Alunos Cadastrados</title>
+
+</head>
+<body>
+    <header>
+        <div th:include="includes :: nav"></div>
+    </header>
+
+    <main><div class="container"><h1>Consultar Alunos</h1><div th:each="aluno : ${alunos}"><div class="row"><h3><span th:text="${aluno.nomeAluno}"></span> <span th:text="${aluno.sobrenomeAluno}"></span> </h3><hr ><p>
+		<strong>Matricula: </strong><span th:text="${aluno.matriculaAluno}"></span><br>
+        <strong>Nome: </strong><span th:text="${aluno.nomeAluno} + ' ' + ${aluno.sobrenomeAluno}"></span><br>
+        <strong>RG: </strong><span th:text="${aluno.rgAluno}"></span><br>
+        <strong>CPF: </strong><span th:text="${aluno.cpfAluno}"></span><br>
+        <!--<strong>Telefone: </strong><span th:text="${telefonealuno.numeroAluno}"></span><br>-->
+        <strong>Email: </strong><span th:text="${aluno.emailAluno}"></span><br>
+        <strong>Gênero: </strong><span th:text="${aluno.generoAluno}"></span><br>
+        <strong>Responsável: </strong><span th:text="${aluno.responsavelAluno}"></span><br>
+        <strong>Telefone: </strong><span th:text="${aluno.melhorNumero}"></span><br>
+        <div class="botoes">
+        <div >
+        <a class="btn btn-primary" th:href="${(#mvc.url('AC#atualizarAluno').arg(0, aluno.matriculaAluno)).build()}" role="button">Alterar</a>
+        </div>
+        <div >
+        <a class="btn btn-danger" th:href="${(#mvc.url('AC#removerAluno').arg(0, aluno.matriculaAluno)).build()}" role="button">Excluir</a>
+        </div>
+        </div>
+        
+        </div></div></div>
+      </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </body>
+    </html>
